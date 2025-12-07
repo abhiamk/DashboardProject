@@ -61,7 +61,7 @@
   </mat-dialog-content>
 
   <mat-card-actions align="end">
-    <button mat-flat-button color="primary" (click)="submit()">Save</button>
+    <button mat-flat-button color="primary" [disabled]="myForm.invalid" (click)="submit()">Save</button>
     <button mat-stroked-button type="button" (click)="CloseDialog()">Cancel</button>
   </mat-card-actions>
 

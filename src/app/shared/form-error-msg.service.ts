@@ -44,6 +44,16 @@ export class FormErrorMsgService {
     if (nc?.errors?.['email']) {
       return `Please enter a valid email address`;
     }
+
+    // pattern
+    if (nc?.errors?.['pattern']) {
+      // // try to provide a context-aware message for common patterns
+      // const patternValue = nc?.errors['pattern'].requiredPattern ?? '';
+      // if (patternValue.includes('https?:\\/\\/') || patternValue.includes('data:') || patternValue.includes('^\\/')) {
+      //   return `Please enter a valid URL (http(s)://, data: URL or path starting with /)`;
+      // }
+      return `${field} has an invalid format`;
+    }
     return '';
   }
 

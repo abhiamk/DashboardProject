@@ -64,6 +64,7 @@ export class MockComponent implements OnInit, AfterViewInit, OnDestroy {
         },
         error: (err) => {
           this.isLoading = false;
+          this.dataSource = new MatTableDataSource([]);
           alert(err);
         }
       });
