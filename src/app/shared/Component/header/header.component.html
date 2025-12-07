@@ -1,0 +1,17 @@
+<nav class="navbar navbar-light text-white bg-dark ">
+    <a class="navbar-brand text-white">
+        <a [hidden]="!isToggled" class="btn btn-outline-secondary" (click)="toggleSidebar()">
+            <i class="fa fa-bars"></i>
+        </a>
+        <img class="ml-2" src="https://dhruvts.com/wp-content/uploads/2024/04/Footer-2.svg"></a>
+    <a class="navbar-brand text-white">Mock</a>
+    <a class="navbar-brand text-white">
+        {{ currentDate }}
+        {{ currentTime }}
+        <a class="mr-2 ml-2" (click)="logout()">
+            <i class="fa fa-power-off"></i>
+        </a>
+    </a>
+
+
+</nav>

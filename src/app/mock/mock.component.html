@@ -1,0 +1,81 @@
+<div class="container-fluid">
+  <div class="navbar-wrapper"><a class="navbar-brand">Client Dashboard</a></div>
+  <div class="d-flex justify-content-center mt-3" *ngIf="isLoading">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+
+  <div *ngIf="!isLoading" class="d-flex align-items-center justify-content-between mb-3 mt-2">
+    <div class="w-25">
+      <input type="text" class="form-control" id="search1" (keyup)="applyFilter($event)" placeholder="Search">
+    </div>
+    <button mat-raised-button extended color="primary" matTooltip="Add" matTooltipPosition="above"
+      (click)="OpenModal()">
+      <mat-icon>add</mat-icon>
+      Add
+    </button>
+  </div>
+
+
+  <section [hidden]="isLoading" class="example-container mat-elevation-z8" tabindex="-1" [ngClass]="tableDensity">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="item">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Item </th>
+        <td mat-cell *matCellDef="let row"> {{row.item}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+        <td mat-cell *matCellDef="let row"> {{row.price}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="currentCount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Current Count </th>
+        <td mat-cell *matCellDef="let row"> {{row.currentCount}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="TotalCount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> TotalCount </th>
+        <td mat-cell *matCellDef="let row"> {{row.TotalCount}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="imgURL">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> imgURL </th>
+        <td mat-cell *matCellDef="let row"> {{row.imgURL}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef aria-label="row actions" style="text-align: center;"> Action
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="action-buttons">
+            <mat-icon color="primary" matTooltip="Edit" class="cursorIcon" tabindex="0" (click)="editRow(element)">edit</mat-icon>
+            <!--  -->
+            <mat-icon color="primary" matTooltip="Details" class="cursorIcon" tabindex="0">info</mat-icon>
+            <!-- (keydown.enter)="deteailRow(element)"
+            (click)="deteailRow(element)" -->
+            <mat-icon color="warn" matTooltip="Delete" class="cursorIcon" tabindex="0" (click)="deleteRow(element)">delete</mat-icon>
+            <!--  -->
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data found</td>
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="matPages" showFirstLastButtons aria-label="Select page of users"
+      class="mat-paginator-sticky">
+    </mat-paginator>
+  </section>
+
+</div>

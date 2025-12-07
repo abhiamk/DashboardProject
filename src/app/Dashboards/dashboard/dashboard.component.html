@@ -1,0 +1,24 @@
+<div class="container-fluid table-responsive">
+    <div class="navbar-wrapper"><a class="navbar-brand">Dashboard</a></div>
+
+    <table class="table table-striped ">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">User Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Completed</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of list; track item) {
+            <tr>
+                <th scope="row">{{item.id}}</th>
+                <td>{{item.userId}}</td>
+                <td>{{item.title}}</td>
+                <td>{{item.completed}}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

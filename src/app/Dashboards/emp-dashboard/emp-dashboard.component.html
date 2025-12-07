@@ -1,0 +1,61 @@
+<div class="container-fluid">
+    <div class="navbar-wrapper"><a class="navbar-brand">Emp Dashboard</a></div>
+    <section class="example-container mat-elevation-z8" tabindex="0">
+        <table mat-table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="weight">
+                <th mat-header-cell *matHeaderCellDef> Weight </th>
+                <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="symbol">
+                <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </section>
+</div>
+
+
+
+<!-- <div class="container-fluid">
+    <button type="button" (click)="addItem()">Add</button>
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border stripe hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Completed</th>
+                <th style="text-align: center;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let todo of todos">
+                <td>{{ todo.id }}</td>
+                <td>{{ todo.title }}</td>
+                <td>{{ todo.completed === true ? 'Yes' : 'No' }}</td>
+                <td>
+                    <div style="display: flex;justify-content: space-evenly;">
+                        <mat-icon color="primary" matTooltip="Edit" class="cursorIcon" tabindex="0">edit</mat-icon>
+                        <mat-icon color="primary" matTooltip="Details" class="cursorIcon" tabindex="0">info</mat-icon>
+                        <mat-icon color="warn" matTooltip="Delete" class="cursorIcon" tabindex="0">delete</mat-icon>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->

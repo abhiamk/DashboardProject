@@ -1,1 +1,64 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import "~datatables.net-dt/css/jquery.dataTables.css"; */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.sidebar .ps.ps--scrolling-y > .ps__rail-y,
+.sidebar > .ps.ps--scrolling-x > .ps__rail-x,
+.ps .ps__rail-x:hover,
+.ps .ps__rail-y:hover,
+.ps .ps__rail-x:focus,
+.ps .ps__rail-y:focus,
+.ps .ps__rail-x.ps--clicking,
+.ps .ps__rail-y.ps--clicking {
+  background-color: transparent !important;
+}
+
+.sidebar .ps.ps--active-y > .ps__rail-y:hover,
+.sidebar > .ps.ps--active-y > .ps__rail-y.ps--clicking {
+  width: 10px !important;
+}
+
+.ps__thumb-y {
+  background-color: #fff !important;
+  width: 6px !important;
+  border-radius: 0px !important;
+  opacity: 0.5;
+}
+
+.cursorIcon {
+  cursor: pointer !important;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+}
+
+.close-btn {
+  margin-right: -8px;
+}
+
+.divider {
+  margin: 0;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.dialog-content {
+  padding-top: 15px;
+  font-size: 16px;
+}
+
+.dialog-actions {
+  padding-bottom: 10px;
+}

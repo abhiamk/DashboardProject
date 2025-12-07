@@ -1,0 +1,25 @@
+.action-buttons {
+  display: flex;
+  /* gap: 1px; */
+  justify-content: space-evenly;
+  /* cursor: pointer; */
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  background-color: #ffff !important;
+  color: #9c27b0 !important;
+}
+
+mat-card {
+  margin: 1%;
+}
+
+.example-container {
+  height: 430px;
+  overflow: auto;
+  width: 100%;
+}

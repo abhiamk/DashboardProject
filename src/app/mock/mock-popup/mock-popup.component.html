@@ -1,0 +1,68 @@
+<mat-card class="dynamic-card">
+
+  <div class="dialog-header">
+    <mat-card-title>{{ formData?.item ? 'Edit Item' : 'Create Item' }}</mat-card-title>
+    <button mat-icon-button (click)="CloseDialog()" class="close-btn">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <mat-dialog-content class="dialog-content">
+    <form [formGroup]="myForm">
+
+      <mat-form-field appearance="outline" class="example-full-width full mr-4 mb-3">
+        <mat-label>Item</mat-label>
+        <!-- <input matInput formControlName="item" placeholder="e.g. Item 1" /> -->
+        <input matInput formControlName="item" placeholder="Item"
+          [class.is-invalid]="isFieldInvalid('item')">
+        <mat-error *ngIf="isFieldInvalid('item')">
+          {{getNameErrorMessage('item','Item')}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="example-full-width full mr-4 mb-3">
+        <mat-label>Price</mat-label>
+        <input matInput type="number" formControlName="price" />
+        <mat-error *ngIf="isFieldInvalid('price')">
+          {{getNameErrorMessage('price','Price')}}
+        </mat-error>
+        <!-- <mat-error *ngIf="f.price.invalid">Enter valid price (≥ 0)</mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="example-full-width full mr-4 mb-3">
+        <mat-label>Current Count</mat-label>
+        <input matInput type="number" formControlName="currentCount" />
+        <mat-error class="invalid-feedback" *ngIf="isFieldInvalid('currentCount')">
+          {{getNameErrorMessage('currentCount','Current Count')}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="example-full-width full mr-4 mb-3">
+        <mat-label>Total Count</mat-label>
+        <input matInput type="number" formControlName="TotalCount" />
+        <mat-error class="invalid-feedback" *ngIf="isFieldInvalid('TotalCount')">
+          {{getNameErrorMessage('TotalCount','Total Count')}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="example-full-width full mr-4 mb-3">
+        <mat-label>Image URL or upload</mat-label>
+        <input matInput formControlName="imgURL" placeholder="https://..." />
+        <mat-hint>Accepts http/https, relative paths or data URLs</mat-hint>
+        <mat-error class="invalid-feedback" *ngIf="isFieldInvalid('imgURL')">
+          {{getNameErrorMessage('imgURL','Img URL')}}
+        </mat-error>
+      </mat-form-field>
+
+    </form>
+
+
+
+  </mat-dialog-content>
+
+  <mat-card-actions align="end">
+    <button mat-flat-button color="primary" (click)="submit()">Save</button>
+    <button mat-stroked-button type="button" (click)="CloseDialog()">Cancel</button>
+  </mat-card-actions>
+
+</mat-card>

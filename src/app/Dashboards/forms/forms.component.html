@@ -1,0 +1,66 @@
+<div class="container">
+  <form [formGroup]="myForm" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="name">Name *</label>
+      <input type="text" formControlName="name" placeholder="Name" class="form-control"
+        [class.is-invalid]="isFieldInvalid('name')">
+      <div class="invalid-feedback" *ngIf="isFieldInvalid('name')">
+        {{getNameErrorMessage('name','Name')}}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lName">Last Name *</label>
+      <input type="text" name="lName" id="lName" placeholder="Last Name" class="form-control" formControlName="lName"
+        [class.is-invalid]="isFieldInvalid('lName')">
+      <div class="invalid-feedback" *ngIf="isFieldInvalid('lName')">{{getNameErrorMessage('lName', 'Last Name')}}</div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email *</label>
+      <input type="email" formControlName="email" placeholder="Email" class="form-control"
+        [class.is-invalid]="isFieldInvalid('email')">
+      <div class="invalid-feedback" *ngIf="isFieldInvalid('email')">
+        {{getNameErrorMessage('email','Email')}}
+      </div>
+    </div>
+
+    <div class="skills-section">
+      <div class="section-header">
+        <h3>Skills *</h3>
+        <button type="button" class="btn btn-outline-primary btn-sm" (click)="addSkills()">Add Skill</button>
+      </div>
+
+      <div formArrayName="skills">
+        <div *ngFor="let skill of skills.controls; let i =index" [formGroupName]="i" class="skill-item">
+          <div>
+            <label [for]="i">Skill Name</label>
+            <input type="text" [name]="i" [id]="i" formControlName="skillName" class="form-control"
+              [class.is-invalid]="isFieldInvalid('skillName', i)" placeholder="Skill Name">
+
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('skillName', i)">
+              {{getSkillNameErrorMessage(i)}}
+            </div>
+          </div>
+          <div class="skill-proficiency">
+            <label [for]="'proficiency_' + i">Proficiency</label>
+            <select [id]="'proficiency_' + i" formControlName="proficiency" class="form-control">
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+              <option value="expert">Expert</option>
+            </select>
+          </div>
+
+          <button type="button" class="btn btn-outline-danger btn-sm" [disabled]="skills.length === 1"
+            (click)="removeSkills(i)">Remove</button>
+        </div>
+      </div>
+    </div>
+    <div class="action-buttons">
+        <button type="submit" mat-raised-button extended color="primary" class="btn-outline-primary">Submit</button>      &nbsp;&nbsp;
+
+        <button type="button" mat-raised-button extended  color="warn" class="btn-outline-danger" (click)="resetForm()">Reset</button>
+      </div>
+  </form>
+</div>

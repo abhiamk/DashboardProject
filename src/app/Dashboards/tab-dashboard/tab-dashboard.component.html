@@ -1,0 +1,5 @@
+<mat-tab-group animationDuration="0ms" [selectedIndex]="activeTabIndex()" (selectedTabChange)="onTabChange($event)">
+    <mat-tab label="Dashboard"><app-dashboard></app-dashboard></mat-tab>
+    <mat-tab label="Client Dashboard"><app-client-dashboard></app-client-dashboard></mat-tab>
+    <mat-tab label="Employee Dashboard"><app-emp-dashboard></app-emp-dashboard></mat-tab>
+</mat-tab-group>

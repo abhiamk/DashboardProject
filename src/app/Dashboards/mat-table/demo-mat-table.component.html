@@ -1,0 +1,5 @@
+<app-mat-table [columns]="columns" [data]="rows"
+  [showSearch]="search"
+  [actions]="[{name:'edit',label:'Edit',icon:'edit'},{name:'delete',label:'Delete',icon:'delete'}]"
+  (action)="onTableAction($event)" (rowClick)="onRowClicked($event)">
+</app-mat-table>

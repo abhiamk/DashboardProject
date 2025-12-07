@@ -1,0 +1,32 @@
+<div class="page-wrapper" [ngClass]="{'toggled' : getSideBarState()}">
+    <!-- <div [hidden]="toggled"> -->
+       <div [ngClass]="{'sidebar-hidden': toggled}">
+        <app-sidebar (isToggle)="toggleSidebar()"></app-sidebar>
+    </div>
+    <main class="page-content">
+        <div class="row-12 mb-2">
+            <!-- <a class="btn btn-outline-secondary ml-2" (click)="toggleSidebar()"> <i class="fa fa-bars"></i></a> -->
+            <app-header [isToggled]="toggled" (isToggle)="toggleSidebar()"></app-header>
+        </div>
+        <div class="mt-1">
+            <router-outlet></router-outlet>
+        </div>
+        <!-- <div> -->
+        <!-- <app-footer></app-footer> -->
+        <!-- </div> -->
+    </main>
+</div>
+
+<!-- <div class="mt-1 mb-2"> -->
+<!-- <div class="card bg-light"> -->
+<!-- <div class="card-body"> -->
+<!-- <router-outlet></router-outlet> -->
+<!-- This is some text within a card body. -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- <mat-card>
+        <mat-card-content>
+            <router-outlet></router-outlet>
+        </mat-card-content>
+    </mat-card> -->
+<!-- </div> -->

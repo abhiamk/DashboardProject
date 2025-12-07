@@ -1,0 +1,59 @@
+table {
+  width: 100%;
+}
+
+/* td,
+th {
+  width: 25%;
+} */
+
+th {
+  background-color: #ffff !important;
+  color: #9c27b0 !important;
+}
+
+mat-card {
+  margin: 1%;
+}
+
+.example-container {
+  height: 430px;
+  overflow: auto;
+  width: 100%;
+}
+
+/* .mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+} */
+
+.mat-paginator-sticky {
+  bottom: 0px;
+  position: sticky;
+  z-index: 10;
+}
+
+.action-buttons {
+  display: flex;
+  /* gap: 1px; */
+  justify-content: space-evenly;
+  /* cursor: pointer; */
+}
+
+.cursorIcon {
+  cursor: pointer;
+}
+
+.compact-table .mat-mdc-row {
+  height: 40px;
+}
+
+.standard-table .mat-mdc-row {
+  height: 50px;
+}
+
+.active-btn {
+  background-color: #63b8f1 !important; /* Purple */
+  /* color: white !important; */
+  /* font-weight: bold; */
+}

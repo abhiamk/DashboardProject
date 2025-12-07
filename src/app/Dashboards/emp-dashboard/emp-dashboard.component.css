@@ -1,0 +1,18 @@
+.example-container {
+  height: 460px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #ccc;
+}
+
+thead {
+  background-color: #ffff;
+  color: #9c27b0;
+}

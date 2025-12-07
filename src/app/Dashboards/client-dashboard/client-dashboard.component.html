@@ -1,0 +1,78 @@
+<div class="container-fluid">
+  <div class="navbar-wrapper"><a class="navbar-brand">Client Dashboard</a></div>
+  <div class="d-flex align-items-center justify-content-between mb-1 mt-1">
+    <div class="w-25">
+      <input type="text" class="form-control" id="search1" (keyup)="applyFilter($event)" placeholder="Search" autofocus>
+      <!-- <mat-form-field class="example-full-width">
+                <input matInput (keyup)="applyFilter($event)" placeholder="Search" type="text" autofocus>
+            </mat-form-field> -->
+    </div>
+    <button mat-raised-button extended color="primary" matTooltip="Add" matTooltipPosition="above"
+      (click)="OpenModal()">
+      <mat-icon>add</mat-icon>
+      Add
+    </button>
+  </div>
+
+  <section class="example-container mat-elevation-z8" tabindex="-1" [ngClass]="tableDensity">
+
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="progress">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
+        <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
+        <td mat-cell *matCellDef="let row"> {{row.symbol}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="symbol1">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol1 </th>
+        <td mat-cell *matCellDef="let row"> {{row.symbol1}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="symbol2">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol2 </th>
+        <td mat-cell *matCellDef="let row"> {{row.symbol2}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions" stickyEnd>
+        <th mat-header-cell *matHeaderCellDef aria-label="row actions" style="text-align: center;"> Action
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="action-buttons">
+            <mat-icon color="primary" matTooltip="Edit" class="cursorIcon" (click)="editRow(element)"
+              tabindex="0">edit</mat-icon>
+            <mat-icon color="primary" matTooltip="Details" class="cursorIcon" (keydown.enter)="deteailRow(element)"
+              (click)="deteailRow(element)" tabindex="0">info</mat-icon>
+            <mat-icon color="warn" matTooltip="Delete" class="cursorIcon" (click)="deleteRow(element)"
+              tabindex="0">delete</mat-icon>
+
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter</td>
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons aria-label="Select page of users"
+      class="mat-paginator-sticky"></mat-paginator>
+  </section>
+</div>
