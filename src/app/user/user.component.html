@@ -1,0 +1,47 @@
+<div class="container">
+  <div *ngIf="userService?.loading()">Loading...</div>
+
+  <div *ngIf="userService.error()" class="error">
+    {{ userService.error() }}
+    <button (click)="userService.load()">Retry</button>
+  </div>
+
+  <table *ngIf="userService.items().length" border="1" class="mb-4">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let it of userService.items()">
+        <td>{{it.id}}</td>
+        <td>{{ it.name }}</td>
+        <td>{{ it.email }}</td>
+        <td>{{ it.address }}</td>
+        <td>
+          <button (click)="edit(it)">Edit</button>
+          <button (click)="remove(it)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+  <h4>{{ userService.selected() ? 'Edit item' : 'Add new item' }}</h4>
+
+  <div class="form">
+    <label>Name: <input [(ngModel)]="form.name"></label>
+    <label>Email: <input type="text" [(ngModel)]="form.email"></label>
+    <label>Address: <input type="text" [(ngModel)]="form.address"></label>
+
+    <div class="actions">
+      <button (click)="save()">Save</button>
+      <button (click)="cancel()" *ngIf="userService.selected()">Cancel</button>
+    </div>
+  </div>
+</div>

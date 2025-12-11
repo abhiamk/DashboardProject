@@ -11,6 +11,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MockPopupComponent } from './mock-popup/mock-popup.component';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mock',
@@ -36,7 +37,9 @@ export class MockComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
-  constructor(private mock: MockApiService, private matDialog: MatDialog) { }
+  constructor(private mock: MockApiService, private matDialog: MatDialog,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.getMockData();
@@ -124,6 +127,10 @@ export class MockComponent implements OnInit, AfterViewInit, OnDestroy {
         },
         error: (err) => alert(err)
       });
+  }
+
+  detailRow(item) {
+    this.router.navigate(['/mock', item.id]);
   }
 
   ngOnDestroy(): void {

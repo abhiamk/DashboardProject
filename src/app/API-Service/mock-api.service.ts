@@ -14,6 +14,10 @@ export class MockApiService {
     return this.http.get<Inventories[]>(`${environment.API_URL}inventories`);
   }
 
+  getMockInventoriesById(id:number): Observable<Inventories> {
+    return this.http.get<Inventories>(`${environment.API_URL}inventories/${id}`);
+  }
+
   postMockInventories(item: Inventories): Observable<Inventories> {
     return this.http.post<Inventories>(`${environment.API_URL}inventories`, item);
   }

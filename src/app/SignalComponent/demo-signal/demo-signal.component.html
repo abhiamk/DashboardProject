@@ -1,0 +1,25 @@
+<div style="max-width:600px;margin:16px auto">
+  <h2>User Manager</h2>
+
+  <form (submit)="addUser()" style="display:flex;gap:8px;margin-bottom:12px">
+    <input [(ngModel)]="newName" name="name" placeholder="name" required />
+    <input [(ngModel)]="newEmail" name="email" placeholder="email" required />
+    <button type="submit">Add</button>
+  </form>
+
+  <div *ngFor="let u of user()">
+    <app-user-card [user]="u" [selectedId]="selectedIdSignal"
+    (edit)="openEdit($event)"
+    (delete)="confirmDelete($event)"
+    (selectUser)="select($event)">
+    </app-user-card>
+  </div>
+
+  <div *ngIf="editing">
+    <h3>Edit: {{ editing.name }}</h3>
+    <input [(ngModel)]="editing.name" />
+    <input [(ngModel)]="editing.email" />
+    <button (click)="saveEdit()">Save</button>
+    <button (click)="cancelEdit()">Cancel</button>
+  </div>
+</div>

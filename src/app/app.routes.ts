@@ -27,8 +27,26 @@ export const routes: Routes = [
         path: 'Form', loadComponent: () => import('./Dashboards/forms/forms.component').then(m => m.FormsComponent)
       },
       {
-        path: 'mock', loadComponent: () => import('./mock/mock.component').then(m => m.MockComponent)
+        path: 'mock',
+        children: [
+          { path: '', loadComponent: () => import('./mock/mock.component').then(m => m.MockComponent) },
+          { path: ':id', loadComponent: () => import('./mock/mock-details/mock-details.component').then(m => m.MockDetailsComponent) }
+        ]
+      },
+      {
+        path: 'signal',
+        loadComponent: () => import('./SignalComponent/demo-signal/demo-signal.component').then(m => m.DemoSignalComponent)
+      },
+      {
+        path: 'userSignal',
+        loadComponent: () => import('./user/user.component').then(m => m.UserComponent)
+      },
+      {
+        path: 'mock-details/:id',
+        loadComponent: () =>
+          import('./mock/mock-details/mock-details.component').then(m => m.MockDetailsComponent)
       }
+
     ]
   },
   {

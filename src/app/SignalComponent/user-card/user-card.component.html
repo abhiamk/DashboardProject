@@ -1,0 +1,11 @@
+<div [style.border]="isSelected() ? '2px solid #2563eb' : '1px solid #ddd'"
+  style="padding:8px;border-radius:6px;margin:6px">
+  <h4>{{ user().name }}</h4>
+  <p>{{ user().email }}</p>
+
+  <div style="margin-top:8px">
+    <button (click)="onEdit()">Edit</button>
+    <button (click)="onDelete()" style="margin-left:8px">Delete</button>
+    <button (click)="onSelect()" style="margin-left:8px">Select</button>
+  </div>
+</div>

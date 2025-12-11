@@ -14,7 +14,7 @@ export class SidebarService {
     {
       title: 'Dashboard',
       icon: 'fa fa-tachometer-alt',
-      active: true,
+      // active: true,
       type: 'dropdown',
       badge: {
         text: 'New ',
@@ -69,6 +69,16 @@ export class SidebarService {
         {
           title: 'Mock Api',
           link: 'mock',
+          privilege: true
+        },
+        {
+          title: 'Mock Signal',
+          link: 'signal',
+          privilege: true
+        },
+        {
+          title: 'User Signal',
+          link: 'userSignal',
           privilege: true
         },
       ]
