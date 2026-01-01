@@ -59,7 +59,8 @@ export class FormsComponent implements OnInit {
 
   createSkills(): FormGroup {
     return this.fb.group({
-      skillName: ['', Validators.required],
+      skillName: ['', [Validators.required, Validators.minLength(3)]],
+      address: ['', Validators.required],
       proficiency: ['beginner', Validators.required]
     })
   }
@@ -123,12 +124,27 @@ export class FormsComponent implements OnInit {
     // return '';
   }
 
-  getSkillNameErrorMessage(index: number) {
-    const scn = this.skills.at(index).get('skillName');
+  getSkillNameErrorMessage(field: string, index: number) {
+    const scn = this.skills.at(index).get(field);
     if (scn?.errors?.['required']) {
-      return 'Skill Name is required';
+      return `${field} is required`;
+    }
+    if (scn?.errors?.['minlength']) {
+      return `${field} must be at least ${scn.errors['minlength'].requiredLength} characters`;
     }
 
+    if (scn?.errors?.['maxlength']) {
+      return `${field} cannot exceed ${scn.errors['maxlength'].requiredLength} characters`;
+    }
+    // const pr = this.skills.at(index).get('proficiency');
+    // if (pr?.errors?.['required']) {
+    //   return 'Proficiency is required';
+    // }
+
+    // const address = this.skills.at(index).get('address');
+    // if (address?.errors?.['required']) {
+    //   return 'Address is required';
+    // }
     return '';
   }
 }

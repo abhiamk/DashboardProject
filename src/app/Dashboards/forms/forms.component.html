@@ -39,28 +39,43 @@
               [class.is-invalid]="isFieldInvalid('skillName', i)" placeholder="Skill Name">
 
             <div class="invalid-feedback" *ngIf="isFieldInvalid('skillName', i)">
-              {{getSkillNameErrorMessage(i)}}
+              {{getSkillNameErrorMessage('skillName',i)}}
             </div>
           </div>
           <div class="skill-proficiency">
             <label [for]="'proficiency_' + i">Proficiency</label>
-            <select [id]="'proficiency_' + i" formControlName="proficiency" class="form-control">
+            <select [id]="'proficiency_' + i" formControlName="proficiency" class="form-control"
+              [class.is-invalid]="isFieldInvalid('proficiency', i)">
               <option value="beginner">Beginner</option>
               <option value="intermediate">Intermediate</option>
               <option value="advanced">Advanced</option>
               <option value="expert">Expert</option>
             </select>
+            <div>
+              <div class="invalid-feedback" *ngIf="isFieldInvalid('proficiency', i)">
+                {{getSkillNameErrorMessage('proficiency',i)}}
+              </div>
+            </div>
           </div>
-
+          <div>
+            <label [for]="i">address</label>
+            <input type="text" [name]="i" [id]="i" formControlName="address" class="form-control"
+              [class.is-invalid]="isFieldInvalid('address', i)" placeholder="address">
+            <div class="invalid-feedback" *ngIf="isFieldInvalid('address', i)">
+              {{getSkillNameErrorMessage('address',i)}}
+            </div>
+          </div>
           <button type="button" class="btn btn-outline-danger btn-sm" [disabled]="skills.length === 1"
             (click)="removeSkills(i)">Remove</button>
         </div>
       </div>
     </div>
     <div class="action-buttons">
-        <button type="submit" mat-raised-button extended color="primary" class="btn-outline-primary">Submit</button>      &nbsp;&nbsp;
+      <button type="submit" mat-raised-button extended color="primary" class="btn-outline-primary">Submit</button>
+      &nbsp;&nbsp;
 
-        <button type="button" mat-raised-button extended  color="warn" class="btn-outline-danger" (click)="resetForm()">Reset</button>
-      </div>
+      <button type="button" mat-raised-button extended color="warn" class="btn-outline-danger"
+        (click)="resetForm()">Reset</button>
+    </div>
   </form>
 </div>
