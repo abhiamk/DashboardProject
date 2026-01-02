@@ -1,0 +1,44 @@
+<!-- src/app/users/users.component.html -->
+
+<div class="example-container mat-elevation-z8">
+  @if (loading()) {
+  <div class="example-loading-shade">
+    <mat-spinner></mat-spinner>
+  </div>
+  }
+
+  <table class="example-table-container" mat-table [dataSource]="users()">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let u">{{ u.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef>First Name</th>
+      <td mat-cell *matCellDef="let u">{{ u.firstName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef>Last Name</th>
+      <td mat-cell *matCellDef="let u">{{ u.lastName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let u">{{ u.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef>Role</th>
+      <td mat-cell *matCellDef="let u">{{ u.role }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator [length]="totalRecords()" [pageSize]="pageSize()" showFirstLastButtons [pageSizeOptions]="[5, 10, 20, 50]"
+    (page)="onPageChange($event)">
+  </mat-paginator>
+</div>

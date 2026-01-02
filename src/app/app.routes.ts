@@ -27,6 +27,9 @@ export const routes: Routes = [
         path: 'Form', loadComponent: () => import('./Dashboards/forms/forms.component').then(m => m.FormsComponent)
       },
       {
+        path: 'dynamicData', loadComponent: () => import('./Dashboards/dynamic-dashboard/dynamic-dashboard.component').then(m => m.DynamicDashboardComponent)
+      },
+      {
         path: 'mock',
         children: [
           { path: '', loadComponent: () => import('./mock/mock.component').then(m => m.MockComponent) },

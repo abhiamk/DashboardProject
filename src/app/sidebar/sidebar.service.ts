@@ -37,6 +37,12 @@ export class SidebarService {
           privilege: true
         },
         {
+          title: 'Dynamic Data',
+          link: 'dynamicData',
+          privilege: true
+
+        },
+        {
           title: 'Client Dashboard',
           link: 'clientDashboard',
           privilege: true
