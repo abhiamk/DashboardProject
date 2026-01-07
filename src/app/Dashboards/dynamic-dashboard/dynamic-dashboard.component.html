@@ -7,6 +7,11 @@
   </div>
   }
 
+  <button mat-raised-button extended color="primary" matTooltip="Add" matTooltipPosition="above" (click)="OpenModal()">
+    <mat-icon>add</mat-icon>
+    Add
+  </button>
+
   <table class="example-table-container" mat-table [dataSource]="users()">
 
     <ng-container matColumnDef="id">
@@ -38,7 +43,34 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-  <mat-paginator [length]="totalRecords()" [pageSize]="pageSize()" showFirstLastButtons [pageSizeOptions]="[5, 10, 20, 50]"
-    (page)="onPageChange($event)">
+  <mat-paginator [length]="totalRecords()" [pageSize]="pageSize()" showFirstLastButtons
+    [pageSizeOptions]="[5, 10, 20, 50]" (page)="onPageChange($event)">
   </mat-paginator>
 </div>
+
+<ng-template #userFormTpl let-form="form">
+
+  <!-- 🔴 THIS LINE IS MANDATORY -->
+  <div [formGroup]="userForm">
+
+    <mat-form-field class="w-100">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>Role</mat-label>
+      <mat-select formControlName="role">
+        <mat-option value="Admin">Admin</mat-option>
+        <mat-option value="User">User</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+</ng-template>
+
