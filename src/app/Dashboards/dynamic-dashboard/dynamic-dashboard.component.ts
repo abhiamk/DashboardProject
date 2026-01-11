@@ -31,6 +31,29 @@ export class DynamicDashboardComponent {
   @ViewChild('userFormTpl', { static: true })
   userFormTpl!: TemplateRef<any>;
 
+  // All possible columns
+  allColumns = [
+    { key: 'id', label: 'ID' },
+    { key: 'firstName', label: 'First Name' },
+    { key: 'lastName', label: 'Last Name' },
+    { key: 'email', label: 'Email' },
+    { key: 'role', label: 'Role' },
+  ];
+
+  // Visible columns (signal)
+  visibleColumns = signal(
+    this.allColumns
+      .filter(c => c.key !== 'role')
+      .map(c => c.key)
+  );
+
+
+  // Toggle column visibility
+  toggleColumn(column: string, checked: boolean) {
+    this.visibleColumns.update(cols =>
+      checked ? [...cols, column] : cols.filter(c => c !== column)
+    );
+  }
 
   constructor(private api: UserApiService, private fb: FormBuilder, private dialog: MatDialog) {
 

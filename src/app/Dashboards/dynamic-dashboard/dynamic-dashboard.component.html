@@ -1,16 +1,37 @@
 <!-- src/app/users/users.component.html -->
 
+<!-- Customize Columns -->
+
+
+<mat-menu #columnMenu="matMenu">
+  <div class="column-menu" (click)="$event.stopPropagation()">
+    <mat-checkbox *ngFor="let col of allColumns" [checked]="visibleColumns().includes(col.key)"
+      (change)="toggleColumn(col.key, $event.checked)">
+      {{ col.label }}
+    </mat-checkbox>
+  </div>
+</mat-menu>
+
 <div class="example-container mat-elevation-z8">
   @if (loading()) {
   <div class="example-loading-shade">
     <mat-spinner></mat-spinner>
   </div>
   }
+  <div style="display: flex; justify-content: space-between;">
 
-  <button mat-raised-button extended color="primary" matTooltip="Add" matTooltipPosition="above" (click)="OpenModal()">
-    <mat-icon>add</mat-icon>
-    Add
-  </button>
+    <button mat-stroked-button color="primary" [matMenuTriggerFor]="columnMenu">
+      <mat-icon>view_column</mat-icon>
+      Customize Columns
+    </button>
+
+    <button mat-raised-button extended color="primary" matTooltip="Add" matTooltipPosition="above"
+      (click)="OpenModal()">
+      <mat-icon>add</mat-icon>
+      Add
+    </button>
+  </div>
+
 
   <table class="example-table-container" mat-table [dataSource]="users()">
 
@@ -39,8 +60,8 @@
       <td mat-cell *matCellDef="let u">{{ u.role }}</td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="visibleColumns()"></tr>
+    <tr mat-row *matRowDef="let row; columns: visibleColumns()"></tr>
   </table>
 
   <mat-paginator [length]="totalRecords()" [pageSize]="pageSize()" showFirstLastButtons
@@ -73,4 +94,3 @@
 
   </div>
 </ng-template>
-
